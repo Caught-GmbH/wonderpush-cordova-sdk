@@ -35,7 +35,7 @@
         return;
     }
 
-    [WonderPush setIntegrator:@"wonderpush-cordova-sdk-2.2.0"];
+    [WonderPush setIntegrator:@"wonderpush-cordova-sdk-3.0.3"];
 
     NSString *clientId = [self.commandDelegate.settings objectForKey:[@"WONDERPUSH_CLIENT_ID" lowercaseString]];
     NSString *clientSecret = [self.commandDelegate.settings objectForKey:[@"WONDERPUSH_CLIENT_SECRET" lowercaseString]];
@@ -140,12 +140,6 @@
     [WonderPush setUserId:userId];
 
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-}
-
-- (void)isReady:(CDVInvokedUrlCommand *)command {
-    BOOL rtn = [WonderPush isReady];
-
-    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:rtn] callbackId:command.callbackId];
 }
 
 - (void)setLogging:(CDVInvokedUrlCommand *)command {

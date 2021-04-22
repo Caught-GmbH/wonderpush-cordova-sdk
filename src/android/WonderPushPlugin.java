@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class WonderPushPlugin extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        WonderPush.setIntegrator("wonderpush-cordova-sdk-2.2.0");
+        WonderPush.setIntegrator("wonderpush-cordova-sdk-3.0.3");
 
         // Forward notification clicks and data notifications receipt
         LocalBroadcastManager.getInstance(cordova.getContext()).registerReceiver(new BroadcastReceiver() {
@@ -159,10 +159,6 @@ public class WonderPushPlugin extends CordovaPlugin {
             String userId = args.isNull(0) ? null : args.getString(0);
             WonderPush.setUserId(userId);
             callbackContext.success();
-
-        } else if (action.equals("isReady")) {
-
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, WonderPush.isReady()));
 
         } else if (action.equals("setLogging")) {
 
